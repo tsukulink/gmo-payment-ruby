@@ -148,6 +148,7 @@ module Gmo
       :user_info             => "UserInfo",
       :package_name          => "PackageName",
       :account_timing_kbn    => "AccountTimingKbn",
+      :account_timing        => "AccountTiming",
       :first_account_date    => "FirstAccountDate"
     }.freeze
 
