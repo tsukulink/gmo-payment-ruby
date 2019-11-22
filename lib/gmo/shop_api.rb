@@ -113,6 +113,16 @@ module Gmo
         post_request name, options
       end
 
+      # 【Famipay決済】
+      #  4.3.1.1. 取引登録
+      #  これ以降の決済取引で必要となる取引IDと取引パスワードの発行を行い、取引を開始します。
+      def entry_tran_famipay(options = {})
+        name = "EntryTranFamipay.idPass"
+        required = [:order_id, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       ### @params ###
       # OrderID
       # JobCd
@@ -265,6 +275,16 @@ module Gmo
       # お客様が入力した情報で後続の決済センターと通信を行い決済を実施し、結果を返します。
       def exec_tran_sb(options = {})
         name = "ExecTranSb.idPass"
+        required = [:access_id, :access_pass, :order_id, :ret_url]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      # 【Famipay決済】
+      #  4.3.1.2. 決済実行
+      # これ以降の決済取引で必要となるトークンを返却します。
+      def exec_tran_famipay(options = {})
+        name = "ExecTranFamipay.idPass"
         required = [:access_id, :access_pass, :order_id, :ret_url]
         assert_required_options(required, options)
         post_request name, options
@@ -964,6 +984,34 @@ module Gmo
       def cancel_return_docomo(options = {})
         name = "DocomoCancelReturn.idPass"
         required = [:access_id, :access_pass, :order_id, :cancel_amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      #【Famipay決済】
+      ## 4.3.2.1. 決済キャンセル・返品 接続先URL
+      # 決済が完了した取引に対して決済内容のキャンセル・返品を行います。
+      # /payment/FamipayCancelReturn.idPass
+      # ShopID
+      # ShopPass
+      # AccessID
+      # AccessPass
+      # OrderID
+      ### @return ###
+      # OrderID
+      # Status
+      # ErrCode
+      # ErrInfo
+      ### example ###
+      # gmo.cancel_return_docomo({
+      #   access_id:     "a41d83f1f4c908baeda04e6dc03e300c",
+      #   access_pass:   "d72eca02e28c88f98b9341a33ba46d5d",
+      #   order_id:      "597ae8c36120b23a3c00014e"
+      # })
+      # {"OrderID"=>"597ae8c36120b23a3c00014e", "Status"=>"CANCEL or RETURN", "ErrCode" => "E01|E02", "ErrInfo" => "E01|E02"}
+      def cancel_return_famipay(options = {})
+        name = "FamipayCancel.idPass"
+        required = [:access_id, :access_pass, :order_id]
         assert_required_options(required, options)
         post_request name, options
       end
