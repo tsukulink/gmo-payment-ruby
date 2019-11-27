@@ -1320,6 +1320,8 @@ module Gmo
       ## 10.2.2.1. 継続課金解約
       # 継続課金登録した取引に対して解約を行います。
       # /payment/AuContinuanceCancel.idPass
+      # ShopID
+      # ShopPass
       # AccessID
       # AccessPass
       # OrderID
@@ -1345,6 +1347,8 @@ module Gmo
       ## 22.3.2.1. 継続課金解約
       # 継続課金登録した取引に対して解約を行います。
       # /payment/SbContinuanceCancel.idPass
+      # ShopID
+      # ShopPass
       # AccessID
       # AccessPass
       # OrderID
@@ -1371,6 +1375,8 @@ module Gmo
       ## 12.3.2.1. 継続課金終了(利用者)
       # 携帯端末から終了を行います。
       # /payment/DocomoContinuanceUserEnd.idPass
+      # ShopID
+      # ShopPass
       # AccessID
       # AccessPass
       # OrderID
@@ -1413,6 +1419,8 @@ module Gmo
       ## 12.3.4.1. 継続課金終了(加盟店様)
       # 継続課金の終了を行います。
       # /payment/DocomoContinuanceShopEnd.idPass
+      # ShopID
+      # ShopPass
       # AccessID
       # AccessPass
       # OrderID
@@ -1439,6 +1447,111 @@ module Gmo
       def stop_end_continuance_docomo(options = {})
         name = "DocomoContinuanceShopEnd.idPass"
         required = [:access_id, :access_pass, :order_id, :amount, :last_month_free_flag]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      #【auかんたん決済継続課金決済】
+      ## 12.3.2.1. 継続課金終了(加盟店様)
+      # 課金日が到来し課金された課金に対して売上取消・返品を行います。
+      # /payment/AuContinuanceChargeCancel.idPass
+      # ShopID
+      # ShopPass
+      # AccessID
+      # AccessPass
+      # OrderID
+      # CancelAmount
+      # CancelTax
+      # ContinuanceMonth
+      ### @return ###
+      # OrderID
+      # ContinuanceMonth
+      # Status
+      # Amount
+      # Tax
+      # CancelAmount
+      # CancelTax
+      # ErrCode
+      # ErrInfo
+      ### example ###
+      # gmo.charge_cancel_continuance_au({
+      #   access_id: "139f8ec33a07c55f406937c52ce4473d",
+      #   access_pass: ",
+      #   order_id: ",
+      #   cancel_amount: "",
+      #   cancel_tax: "",
+      #   continuance_month: "",
+      # })
+      # {"ShopID"=>"", "OrderID" => "", "Status" => "", "Amount" => "", "Tax" => "", "CancelAmount" => "", "CancelTax" => "", "ErrCode" => "", "ErrInfo" => ""}
+      def charge_cancel_continuance_au(options = {})
+        name = "AuContinuanceChargeCancel.idPass"
+        required = [:access_id, :access_pass, :order_id, :cancel_amount, :cancel_tax, :continuance_month]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      #【ドコモ継続課金サービス決済】
+      ## 12.5.2.1. 継続課金終了(加盟店様)
+      # 課金データのキャンセル・返品を行います。
+      # /payment/DocomoContinuanceCancelReturn.idPass
+      # ShopID
+      # ShopPass
+      # AccessID
+      # AccessPass
+      # OrderID
+      # CancelAmount
+      # CancelTax
+      # ContinuanceMonth
+      ### @return ###
+      # OrderID
+      # Status
+      # Amount
+      # Tax
+      # CancelAmount
+      # CancelTax
+      # ErrCode
+      # ErrInfo
+      ### example ###
+      # gmo.cancel_return_continuance_docomo({
+      #   access_id: "139f8ec33a07c55f406937c52ce4473d",
+      #   access_pass: ",
+      #   order_id: ",
+      #   cancel_amount: "",
+      #   cancel_tax: "",
+      #   continuance_month: "",
+      # })
+      # {"ShopID"=>"", "OrderID" => "", "Status" => "", "Amount" => "", "Tax" => "", "CancelAmount" => "", "CancelTax" => "", "ErrCode" => "", "ErrInfo" => ""}
+      def cancel_return_continuance_docomo(options = {})
+        name = "DocomoContinuanceCancelReturn.idPass"
+        required = [:access_id, :access_pass, :order_id, :cancel_amount, :continuance_month]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      #【ソフトバンクまとめて支払い(B)継続課金決済】
+      ## 22.2.2.1 課金データ取消
+      # 課金データの取消を行います。
+      # /payment/SbContinuanceChargeCancel.idPass
+      # ShopID
+      # ShopPass
+      # AccessID
+      # OrderID
+      # ContinuanceMonth
+      ### @return ###
+      # OrderID
+      # Status
+      # ErrCode
+      # ErrInfo
+      ### example ###
+      # gmo.charge_cancel_continuance_sb({
+      #   access_id: "139f8ec33a07c55f406937c52ce4473d",
+      #   OrderID: "",
+      #   continuance_month: "",
+      # })
+      # {"OrderID"=>"", "Status" => "", "ErrCode" => "", "ErrInfo" => ""}
+      def charge_cancel_continuance_sb(options = {})
+        name = "SbContinuanceChargeCancel.idPass"
+        required = [:access_id, :access_pass, :order_id, :continuance_month]
         assert_required_options(required, options)
         post_request name, options
       end
