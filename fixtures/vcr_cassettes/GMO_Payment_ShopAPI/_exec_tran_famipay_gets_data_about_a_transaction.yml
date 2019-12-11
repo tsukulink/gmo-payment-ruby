@@ -1,0 +1,69 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<HOST>/payment/EntryTranFamipay.idPass
+    body:
+      encoding: UTF-8
+      string: OrderID=<TOKEN>572429760&Amount=<TOKEN>00&ShopID=<SHOP_ID>&ShopPass=<SHOP_PASS>
+    headers:
+      Accept-Encoding:
+      - gzip;q=<TOKEN>.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 30 Oct 20<TOKEN>9 <TOKEN>0:02:40 GMT
+      Content-Type:
+      - text/plain;charset=windows-3<TOKEN>j
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: AccessID=<TOKEN>b483cb2e<TOKEN>9537d93e<TOKEN>bf3eab95eca3a&AccessPass=ed92ecdc6fed4a5ce7f72d0ed082f59<TOKEN>
+    http_version: 
+  recorded_at: Wed, 30 Oct 2019 10:02:40 GMT
+- request:
+    method: post
+    uri: https://<HOST>/payment/ExecTranFamipay.idPass
+    body:
+      encoding: UTF-8
+      string: AccessID=<TOKEN>b483cb2e<TOKEN>9537d93e<TOKEN>bf3eab95eca3a&AccessPass=ed92ecdc6fed4a5ce7f72d0ed082f59<TOKEN>&OrderID=<TOKEN>572429760&RetURL=https%3A%2F%2Fexample.com%2Fpath%2Fto%2Freturn%2Fsuccess&ShopID=<SHOP_ID>&ShopPass=<SHOP_PASS>
+    headers:
+      Accept-Encoding:
+      - gzip;q=<TOKEN>.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Wed, 30 Oct 20<TOKEN>9 <TOKEN>0:02:40 GMT
+      Content-Type:
+      - text/plain;charset=windows-3<TOKEN>j
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: AccessID=<TOKEN>b483cb2e<TOKEN>9537d93e<TOKEN>bf3eab95eca3a&Token=36bbc75403d03d97d8d6<TOKEN>ba7ce32b3f4&StartURL=https://<HOST>/payment/FamipayStart.idPass
+    http_version: 
+  recorded_at: Wed, 30 Oct 2019 10:02:40 GMT
+recorded_with: VCR 5.0.0
