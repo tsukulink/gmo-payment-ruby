@@ -1033,7 +1033,7 @@ module Gmo
       end
 
       #【ドコモ継続課金サービス決済】
-      ## 12.1.1. 取引登録
+      ## 12.1.2.1. 取引登録
       # これ以降の決済取引で必要となる取引IDと取引パスワードの発行を行い、取引を開始します
       # /payment/EntryTranDocomoContinuance.idPass
       # ShopID
@@ -1176,7 +1176,7 @@ module Gmo
       end
 
       #【ドコモ継続課金サービス決済】
-      ## 10.1.2.2. 決済実行
+      ## 12.1.2.2. 決済実行
       # これ以降の決済取引で必要となるトークンを返却します。
       # /payment/ExecTranDocomoContinuance.idPass
       # ShopID
@@ -1289,8 +1289,8 @@ module Gmo
       end
 
       #【ソフトバンクまとめて支払い(B)継続課金決済】
-      ## 10.1.2.3. 支払手続き開始IFの呼出し
-      # お客様をau ID認証画面に誘導します。
+      ## 22.1.2.3. 支払手続き開始IFの呼出し
+      # お客様をソフトバンクセンターへ誘導します。
       # /payment/SbContinuanceStart.idPass
       # AccessID
       # Token
@@ -1452,7 +1452,7 @@ module Gmo
       end
 
       #【auかんたん決済継続課金決済】
-      ## 12.3.2.1. 継続課金終了(加盟店様)
+      ## 10.3.2.1. 継続課金終了(加盟店様)
       # 課金日が到来し課金された課金に対して売上取消・返品を行います。
       # /payment/AuContinuanceChargeCancel.idPass
       # ShopID
