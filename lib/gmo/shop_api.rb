@@ -1022,7 +1022,7 @@ module Gmo
         post_request name, options
       end
 
-      #【ソフトバンクまとめて支払い(B)継続課金決済】
+      #【ソフトバンクまとめて支払い継続課金決済】
       ## 22.1.2.1. 取引登録
       # これ以降の決済取引で必要となる取引IDと取引パスワードの発行を行い、取引を開始します
       #/payment/EntryTranSbContinuance.idPass
@@ -1149,7 +1149,7 @@ module Gmo
         post_request name, options
       end
 
-      #【ソフトバンクまとめて支払い(B)継続課金決済】
+      #【ソフトバンクまとめて支払い継続課金決済】
       ## 22.1.2.2. 決済実行
       # これ以降の決済取引で必要となるトークンを返却します。
       # /payment/ExecTranSbContinuance.idPass
@@ -1308,7 +1308,7 @@ module Gmo
         post_request name, options
       end
 
-      #【ソフトバンクまとめて支払い(B)継続課金決済】
+      #【ソフトバンクまとめて支払い継続課金決済】
       ## 22.1.2.3. 支払手続き開始IFの呼出し
       # お客様をソフトバンクセンターへ誘導します。
       # /payment/SbContinuanceStart.idPass
@@ -1363,7 +1363,7 @@ module Gmo
         post_request name, options
       end
 
-      #【ソフトバンクまとめて支払い(B)継続課金決済】
+      #【ソフトバンクまとめて支払い継続課金決済】
       ## 22.3.2.1. 継続課金解約
       # 継続課金登録した取引に対して解約を行います。
       # /payment/SbContinuanceCancel.idPass
@@ -1548,7 +1548,7 @@ module Gmo
         post_request name, options
       end
 
-      #【ソフトバンクまとめて支払い(B)継続課金決済】
+      #【ソフトバンクまとめて支払い継続課金決済】
       ## 22.2.2.1 課金データ取消
       # 課金データの取消を行います。
       # /payment/SbContinuanceChargeCancel.idPass
