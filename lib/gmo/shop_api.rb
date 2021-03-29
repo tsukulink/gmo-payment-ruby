@@ -53,6 +53,64 @@ module Gmo
         post_request name, options
       end
 
+      ## 3.1.1 口座登録依頼インタフェース
+      # /payment/BankAccountEntry.idPass
+      def entry_bank_account(options = {})
+        name = "BankAccountEntry.idPass"
+        required = [:site_id, :site_pass, :member_id, :create_member, :ret_url, :consumer_device]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      ## 2.2.2.1.取引登録
+      # これ以降の決済取引で必要となる取引 ID と取引パスワードの発行を行い、取引を開始します。
+      # /payment/EntryTranBankaccount.idPass
+      # ShopID
+      # ShopPass
+      # OrderID
+      # Amount
+      # Tax
+      ### @return ###
+      # AccessID
+      # AccessPass
+      # ErrCode
+      # ErrInfo
+      def entry_tran_bank_account(options = {})
+        name = "EntryTranBankaccount.idPass"
+        required = [:order_id, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      ## 2.2.2.2.請求依頼
+      # /payment/ExecTranBankaccount.idPass
+      # ShopID
+      # ShopPass
+      # AccessID
+      # AccessPass
+      # OrderID
+      # MemberID
+      # TargetDate
+      # Remarks
+      # ClientField1
+      # ClientField2
+      # ClientField3
+      # CheckMode
+      ### @return ###
+      # AccessID
+      # AccessPass
+      # ErrCode
+      # ErrInfo
+      def exec_tran_bank_account(options = {})
+        name = "ExecTranBankaccount.idPass"
+        required = [:access_id, :access_pass, :order_id, :member_id, :target_date]
+        # if options[:site_id].present?
+        #   required |= [:site_id, :site_pass, :member_id, :create_member]
+        # end
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       # 【コンビニ払い】
       #  2.1.2.1. 取引登録
       #  これ以降の決済取引で必要となる取引IDと取引パスワードの発行を行い、取引を開始します。
@@ -1575,7 +1633,7 @@ module Gmo
         assert_required_options(required, options)
         post_request name, options
       end
-        
+
       #【Famipay決済】
       ## 4.3.2.1. 決済キャンセル・返品 接続先URL
       # 決済が完了した取引に対して決済内容のキャンセル・返品を行います。
