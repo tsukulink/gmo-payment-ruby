@@ -103,10 +103,7 @@ module Gmo
       # ErrInfo
       def exec_tran_bank_account(options = {})
         name = "ExecTranBankaccount.idPass"
-        required = [:access_id, :access_pass, :order_id, :member_id, :target_date]
-        # if options[:site_id].present?
-        #   required |= [:site_id, :site_pass, :member_id, :create_member]
-        # end
+        required = [:site_id, :site_pass, :access_id, :access_pass, :order_id, :member_id, :target_date]
         assert_required_options(required, options)
         post_request name, options
       end
