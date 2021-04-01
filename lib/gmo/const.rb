@@ -120,7 +120,7 @@ module Gmo
       :register_disp_8       => "RegisterDisp8",
       :reserve_no            => "ReserveNo",
       :ret_url               => "RetURL",
-      :remarkds              => "Remarks",
+      :remarks               => "Remarks",
       :security_code         => "SecurityCode",
       :seq_mode              => "SeqMode",
       :service_name          => "ServiceName",
